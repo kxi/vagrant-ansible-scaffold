@@ -1,0 +1,53 @@
+- name: Install Mysql Package
+  yum:
+    name: "{{ item }}"
+    state: present
+  become: true
+  with_items:
+    - gcc
+    - python-setuptools
+    - python-devel
+    - mysql-devel
+    - mysql-server
+  tags:
+    - install
+    - package
+
+
+- name: Install Python Pip
+  shell: >
+    easy_install pip
+  become: true
+  tags:
+    - install
+    - package
+
+
+- name: Pip install mysql-python
+  pip:
+    name: "mysql-python"
+  become: true
+  tags:
+    - install
+    - package
+
+
+- name: Ensure Data Directory Exists and With Correct Permission
+  file:
+    path: "{{ data_dir }}"
+    owner: "{{ mysql_group }}"
+    group: "{{ mysql_gid }}"
+    mode: 0755
+    state: "directory"
+  tags:
+    - install
+    - package
+
+
+- name: Build Initial Database
+  shell: "mysql_install_db --datadir={{ data_dir }} --user={{ mysql_user }}"
+  become: true
+  become_user: "{{ mysql_user }}"
+  tags:
+    - install
+    - package

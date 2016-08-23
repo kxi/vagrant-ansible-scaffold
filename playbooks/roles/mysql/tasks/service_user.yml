@@ -1,0 +1,20 @@
+- name: Create Mysql Account Group
+  group:
+    name: "{{ mysql_group }}"
+    gid: "{{ mysql_gid }}"
+    state: present
+  sudo: true
+  tags:
+    - install
+    - create-user
+
+
+- name: Create Mysql Account User
+  group:
+    name: "{{ mysql_user }}"
+    gid: "{{ mysql_uid }}"
+    state: present
+  sudo: true
+  tags:
+    - install
+    - create-user

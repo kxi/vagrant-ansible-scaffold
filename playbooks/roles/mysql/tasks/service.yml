@@ -1,0 +1,18 @@
+- name: Enable Mysql on Boot
+  service:
+    name: mysqld
+    enabled: yes
+  become: true
+  tags:
+    - install
+    - service
+
+
+- name: Restart Mysql Service
+  service:
+    name: mysqld
+    state: restarted
+  become: true
+  tags:
+    - install
+    - service

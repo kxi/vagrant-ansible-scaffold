@@ -1,0 +1,9 @@
+- name: Install Mysql Server
+  hosts: test-server
+  gather_facts: true
+  sudo: true
+  vars_files:
+    - common-var.yml
+  roles:
+#    - mysql
+    - cms-mysql

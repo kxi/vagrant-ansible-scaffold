@@ -1,0 +1,7 @@
+data_dir: "/var/lib/mysql"
+include_dir: "/etc/my.cnf.d"
+log_bin_dir: "/var/lib/mysql"
+mysql_user: "mysql"
+mysql_group: "mysql"
+mysql_gid: 27
+mysql_uid: 27

@@ -1,0 +1,22 @@
+- name: Ensure Include Directory Exists and With Correct Permission
+  file:
+    path: "{{ include_dir }}"
+    owner: "root"
+    group: "root"
+    mode: 0755
+    state: "directory"
+  tags:
+    - install
+    - config
+
+
+- name: Ensure Log_bin Directory Exists and With Correct Permission
+  file:
+    path: "{{ log_bin_dir }}"
+    owner: "{{ mysql_group }}"
+    group: "{{ mysql_gid }}"
+    mode: 0755
+    state: "directory"
+  tags:
+    - install
+    - config
