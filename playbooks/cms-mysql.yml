@@ -5,5 +5,5 @@
   vars_files:
     - common-var.yml
   roles:
-#    - mysql
+    - mysql
     - cms-mysql
