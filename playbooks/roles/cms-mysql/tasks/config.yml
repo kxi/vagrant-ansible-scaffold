@@ -1,0 +1,55 @@
+- name: Ensure Include Directory Exists and With Correct Permission
+  file:
+    path: "{{ include_dir }}"
+    owner: "root"
+    group: "root"
+    mode: 0755
+    state: "directory"
+  tags:
+    - install-cms-mysql
+    - config-cms-mysql
+
+
+- name: Ensure Log_bin Directory Exists and With Correct Permission
+  file:
+    path: "{{ log_bin_dir }}"
+    owner: "{{ mysql_group }}"
+    group: "{{ mysql_gid }}"
+    mode: 0755
+    state: "directory"
+  tags:
+    - install-cms-mysql
+    - config-cms-mysql
+
+
+- name: Initialize CMS Database
+  mysql_db:
+    name: wordpress_cms
+    state: present
+  tags:
+    - install-cms-mysql
+    - config-cms-mysql
+
+
+- name: Create CMS User
+  mysql_user:
+    name: "{{ cms_service_user }}"
+    host: localhost
+    password: '*B67CFC16E1B5E81AC55398CD92F135CEBF17FED7'
+    encrypted: yes
+    priv: "*.*:USAGE"
+    state: present
+  tags:
+    - install-cms-mysql
+    - config-cms-mysql
+
+
+- name: Set CMS User Priv
+  mysql_user:
+    name: "{{ cms_service_user }}"
+    host: localhost
+    priv: "wordpress_cms.*:ALL"
+    state: present
+  tags:
+    - install
+    - cms-db-config

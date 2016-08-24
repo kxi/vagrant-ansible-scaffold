@@ -1,0 +1,48 @@
+- name: Stop Slave Thread
+  mysql_replication:
+    mode: stopslave
+  when: (mysql_slave_ip_address is defined and mysql_slave_ip_address in ansible_all_ipv4_addresses)
+  tags:
+    - install-cms-mysql
+    - sync-cms-mysql-master-slave
+
+
+- name: Get MySQL Master Information
+  mysql_replication:
+    mode: getmaster
+  register: mysql_master_info
+  delegate_to: "{{mysql_master_ip_address}}"
+  when: (mysql_slave_ip_address is defined and mysql_slave_ip_address in ansible_all_ipv4_addresses)
+  tags:
+    - install-cms-mysql
+    - sync-cms-mysql-master-slave
+
+
+- debug: var=mysql_master_info
+  when: (mysql_slave_ip_address is defined and mysql_slave_ip_address in ansible_all_ipv4_addresses)
+  tags:
+    - install-cms-mysql
+    - sync-cms-mysql-master-slave
+
+
+- name: Change Mysql Master on Slave
+  mysql_replication:
+    mode: changemaster
+    master_host: "{{mysql_master_ip_address}}"
+    master_log_file: "{{ mysql_master_info.File}}"
+    master_log_pos: "{{mysql_master_info.Position}}"
+  when: (mysql_slave_ip_address is defined and mysql_slave_ip_address in ansible_all_ipv4_addresses)
+  tags:
+    - install-cms-mysql
+    - sync-cms-mysql-master-slave
+
+
+- name: Start Slave Thread
+  mysql_replication:
+    mode: startslave
+  when: (mysql_slave_ip_address is defined and mysql_slave_ip_address in ansible_all_ipv4_addresses)
+  tags:
+    - install-cms-mysql
+    - sync-cms-mysql-master-slave
+
+    

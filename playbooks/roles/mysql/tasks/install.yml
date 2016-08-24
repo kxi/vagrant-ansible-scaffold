@@ -11,9 +11,8 @@
     - python-setuptools
     - libselinux-python
   tags:
-    - install
-    - package
-    - test
+    - install-mysql
+    - install-package
 
 
 - name: Install Python Pip
@@ -21,9 +20,8 @@
     easy_install pip
   become: true
   tags:
-    - install
-    - package
-    - test
+    - install-mysql
+    - install-package
 
 
 - name: Pip install mysql-python
@@ -31,9 +29,8 @@
     name: "mysql-python"
   become: true
   tags:
-    - install
-    - package
-    - test
+    - install-mysql
+    - install-package
 
 
 - name: Ensure Data Directory Exists and With Correct Permission
@@ -44,8 +41,8 @@
     mode: 0755
     state: "directory"
   tags:
-    - install
-    - package
+    - install-mysql
+    - install-package
 
 
 - name: Build Initial Database
@@ -53,5 +50,5 @@
   become: true
   become_user: "{{ mysql_user }}"
   tags:
-    - install
-    - package
+    - install-mysql
+    - install-package

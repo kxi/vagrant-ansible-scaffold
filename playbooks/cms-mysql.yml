@@ -9,6 +9,8 @@
     - { role: cms-mysql, when: (mysql_master_ip_address is defined and mysql_master_ip_address in ansible_all_ipv4_addresses) }
 
 
+
+
 - name: Install Mysql Slave Server
   hosts: all
   gather_facts: true

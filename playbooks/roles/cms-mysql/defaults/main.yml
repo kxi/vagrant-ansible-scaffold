@@ -1,4 +1,4 @@
-backup_service_user: "replusr"
-backup_service_user_password: "ReplUser1!"
 backup_cron_job_name: "/usr/local/sbin/mysqlbackup.sh"
 backup_dir: "/backups"
+cms_service_user: "cmsuser"
+cms_backup_user: "cmsbackup"

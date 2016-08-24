@@ -5,3 +5,5 @@ mysql_user: "mysql"
 mysql_group: "mysql"
 mysql_gid: 27
 mysql_uid: 27
+replic_service_user: "replusr"
+replic_service_user_password: "ReplUser1!"

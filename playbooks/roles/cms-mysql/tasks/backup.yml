@@ -1,15 +1,3 @@
-- name: Create Mysql Backup User
-  mysql_user:
-    name: "{{ backup_service_user }}"
-    host: localhost
-    password: "{{ backup_service_user_password }}"
-    priv: "*.*:SELECT,RELOAD,LOCK\ TABLES,SHOW\ VIEW,PROCESS"
-    state: present
-  tags:
-    - install-cms-mysql
-    - cms-mysql-backup
-
-
 - name: Set Up Mysql Backup Cron Job
   cron:
     name: "mysql-backup"
@@ -19,7 +7,7 @@
     job: "{{ backup_cron_job_name }}"
   tags:
     - install-cms-mysql
-    - cms-mysql-backup
+    - set-cms-mysql-backup
 
 
 - name: Ensure Backup Directory Exists and With Correct Permission
@@ -31,4 +19,17 @@
     state: "directory"
   tags:
     - install-cms-mysql
-    - cms-mysql-backup
+    - set-cms-mysql-backup
+
+
+- name: Create CMS Backup User
+  mysql_user:
+    name: "{{ cms_backup_user }}"
+    host: localhost
+    password: '*13CA0D4853B0272F0D31287FEE7C5A1421173886'
+    encrypted: yes
+    priv: "*.*:SELECT,RELOAD,PROCESS,LOCK\ TABLES,SHOW\ VIEW"
+    state: present
+  tags:
+    - install-cms-mysql
+    - set-cms-mysql-backup

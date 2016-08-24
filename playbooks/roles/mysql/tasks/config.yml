@@ -18,8 +18,8 @@
     mode: 0755
     state: "directory"
   tags:
-    - install
-    - config
+    - install-mysql
+    - config-mysql
 
 
 - name: Confing Mysql Master
@@ -32,8 +32,8 @@
   become: true
   when: mysql_master_ip_address is defined and mysql_master_ip_address in ansible_all_ipv4_addresses
   tags:
-    - install
-    - config
+    - install-mysql
+    - config-mysql
 
 
 - name: Confing Mysql Slave
@@ -46,5 +46,5 @@
   become: true
   when: mysql_slave_ip_address is defined and mysql_slave_ip_address in ansible_all_ipv4_addresses
   tags:
-    - install
-    - config
+    - install-mysql
+    - config-mysql

@@ -4,7 +4,7 @@
     enabled: yes
   become: true
   tags:
-    - install
+    - install-mysql
     - service
 
 
@@ -14,5 +14,5 @@
     state: restarted
   become: true
   tags:
-    - install
+    - install-mysql
     - service

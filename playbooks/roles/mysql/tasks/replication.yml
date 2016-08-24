@@ -1,0 +1,22 @@
+- name: Create Mysql Replication Local User
+  mysql_user:
+    name: "{{ replic_service_user }}"
+    host: localhost
+    password: "{{ replic_service_user_password }}"
+    priv: "*.*:REPLICATION SLAVE"
+    state: present
+  tags:
+    - install-mysql
+    - set-mysql-replication
+
+
+- name: Create Mysql Replication Remote User
+  mysql_user:
+    name: "{{ replic_service_user }}"
+    host: "%"
+    password: "{{ replic_service_user_password }}"
+    priv: "*.*:REPLICATION SLAVE"
+    state: present
+  tags:
+    - install-mysql
+    - set-mysql-replication

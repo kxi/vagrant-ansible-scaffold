@@ -1,1 +1,3 @@
+- include: config.yml
 - include: backup.yml
+- include: master-slave-sync.yml
