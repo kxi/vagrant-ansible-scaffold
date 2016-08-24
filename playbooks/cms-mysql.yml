@@ -1,4 +1,4 @@
-- name: Install Mysql Master Server
+- name: Install MySQL Master Server
   hosts: all
   gather_facts: true
   sudo: true
@@ -11,7 +11,7 @@
 
 
 
-- name: Install Mysql Slave Server
+- name: Install MySQL Slave Server
   hosts: all
   gather_facts: true
   sudo: true

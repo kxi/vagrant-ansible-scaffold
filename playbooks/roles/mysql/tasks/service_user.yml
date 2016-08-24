@@ -1,4 +1,4 @@
-- name: Create Mysql Account Group
+- name: Create MySQL Account Group
   group:
     name: "{{ mysql_group }}"
     gid: "{{ mysql_gid }}"
@@ -9,7 +9,7 @@
     - create-user
 
 
-- name: Create Mysql Account User
+- name: Create MySQL Account User
   group:
     name: "{{ mysql_user }}"
     gid: "{{ mysql_uid }}"

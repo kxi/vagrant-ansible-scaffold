@@ -1,4 +1,4 @@
-- name: Enable Mysql on Boot
+- name: Enable MySQL on Boot
   service:
     name: mysqld
     enabled: yes
@@ -8,7 +8,7 @@
     - service
 
 
-- name: Restart Mysql Service
+- name: Restart MySQL Service
   service:
     name: mysqld
     state: restarted

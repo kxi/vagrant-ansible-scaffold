@@ -1,4 +1,4 @@
-- name: Create Mysql Replication Local User
+- name: Create MySQL Replication Local User
   mysql_user:
     name: "{{ replic_service_user }}"
     host: localhost
@@ -10,7 +10,7 @@
     - set-mysql-replication
 
 
-- name: Create Mysql Replication Remote User
+- name: Create MySQL Replication Remote User
   mysql_user:
     name: "{{ replic_service_user }}"
     host: "%"

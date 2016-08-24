@@ -1,4 +1,4 @@
-- name: Set Up Mysql Backup Cron Job
+- name: Set Up MySQL Backup Cron Job
   cron:
     name: "mysql-backup"
     minute: "0"

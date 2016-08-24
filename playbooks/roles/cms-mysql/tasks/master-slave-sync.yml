@@ -25,7 +25,7 @@
     - sync-cms-mysql-master-slave
 
 
-- name: Change Mysql Master on Slave
+- name: Change MySQL Master on Slave
   mysql_replication:
     mode: changemaster
     master_host: "{{mysql_master_ip_address}}"

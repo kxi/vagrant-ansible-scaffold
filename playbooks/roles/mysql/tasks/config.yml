@@ -22,7 +22,7 @@
     - config-mysql
 
 
-- name: Confing Mysql Master
+- name: Confing MySQL Master
   template:
     src: master.my.cnf.j2
     dest: /etc/my.cnf
@@ -36,7 +36,7 @@
     - config-mysql
 
 
-- name: Confing Mysql Slave
+- name: Confing MySQL Slave
   template:
     src: slave.my.cnf.j2
     dest: /etc/my.cnf

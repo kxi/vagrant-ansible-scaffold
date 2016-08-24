@@ -1,4 +1,4 @@
-- name: Install Mysql Package
+- name: Install MySQL Package
   yum:
     name: "{{ item }}"
     state: present
