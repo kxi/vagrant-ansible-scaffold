@@ -1,9 +1,20 @@
-- name: Install Mysql Server
-  hosts: test-server
+- name: Install Mysql Master Server
+  hosts: all
   gather_facts: true
   sudo: true
   vars_files:
     - common-var.yml
   roles:
-    - mysql
-    - cms-mysql
+    - { role: mysql, when: (mysql_master_ip_address is defined and mysql_master_ip_address in ansible_all_ipv4_addresses) }
+    - { role: cms-mysql, when: (mysql_master_ip_address is defined and mysql_master_ip_address in ansible_all_ipv4_addresses) }
+
+
+- name: Install Mysql Slave Server
+  hosts: all
+  gather_facts: true
+  sudo: true
+  vars_files:
+    - common-var.yml
+  roles:
+    - { role: mysql, when: (mysql_slave_ip_address is defined and mysql_slave_ip_address in ansible_all_ipv4_addresses) }
+    - { role: cms-mysql, when: (mysql_slave_ip_address is defined and mysql_slave_ip_address in ansible_all_ipv4_addresses) }

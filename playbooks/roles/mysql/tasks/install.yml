@@ -5,13 +5,15 @@
   become: true
   with_items:
     - gcc
-    - python-setuptools
     - python-devel
     - mysql-devel
     - mysql-server
+    - python-setuptools
+    - libselinux-python
   tags:
     - install
     - package
+    - test
 
 
 - name: Install Python Pip
@@ -21,6 +23,7 @@
   tags:
     - install
     - package
+    - test
 
 
 - name: Pip install mysql-python
@@ -30,6 +33,7 @@
   tags:
     - install
     - package
+    - test
 
 
 - name: Ensure Data Directory Exists and With Correct Permission

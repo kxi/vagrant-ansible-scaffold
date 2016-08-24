@@ -20,3 +20,31 @@
   tags:
     - install
     - config
+
+
+- name: Confing Mysql Master
+  template:
+    src: master.my.cnf.j2
+    dest: /etc/my.cnf
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  become: true
+  when: mysql_master_ip_address is defined and mysql_master_ip_address in ansible_all_ipv4_addresses
+  tags:
+    - install
+    - config
+
+
+- name: Confing Mysql Slave
+  template:
+    src: slave.my.cnf.j2
+    dest: /etc/my.cnf
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  become: true
+  when: mysql_slave_ip_address is defined and mysql_slave_ip_address in ansible_all_ipv4_addresses
+  tags:
+    - install
+    - config
