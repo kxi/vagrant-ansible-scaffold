@@ -26,8 +26,7 @@
   mysql_user:
     name: "{{ cms_backup_user }}"
     host: localhost
-    password: '*13CA0D4853B0272F0D31287FEE7C5A1421173886'
-    encrypted: yes
+    password: "{{ cms_backup_user_password }}"
     priv: "*.*:SELECT,RELOAD,PROCESS,LOCK\ TABLES,SHOW\ VIEW"
     state: present
   tags:

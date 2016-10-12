@@ -1,7 +1,7 @@
 - name: Install MySQL Master Server
   hosts: all
   gather_facts: true
-  sudo: true
+  become: true
   vars_files:
     - common-var.yml
   roles:
@@ -9,12 +9,10 @@
     - { role: cms-mysql, when: (mysql_master_ip_address is defined and mysql_master_ip_address in ansible_all_ipv4_addresses) }
 
 
-
-
 - name: Install MySQL Slave Server
   hosts: all
   gather_facts: true
-  sudo: true
+  become: true
   vars_files:
     - common-var.yml
   roles:

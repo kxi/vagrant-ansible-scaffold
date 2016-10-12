@@ -35,8 +35,7 @@
   mysql_user:
     name: "{{ cms_service_user }}"
     host: localhost
-    password: '*B67CFC16E1B5E81AC55398CD92F135CEBF17FED7'
-    encrypted: yes
+    password: "{{ cms_service_user_password }}"
     priv: "*.*:USAGE"
     state: present
   tags:
