@@ -1,0 +1,2 @@
+- debug: msg="{{ my_data_center }}"
+- debug: msg="{{ my_role }}"

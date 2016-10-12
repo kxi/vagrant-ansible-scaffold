@@ -2,3 +2,4 @@ le.lock
 .sw*
 *~
 .vagrant
+*retry

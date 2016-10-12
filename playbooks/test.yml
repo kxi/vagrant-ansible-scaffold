@@ -1,8 +1,0 @@
-- name: Run Test
-  hosts: test-server
-  gather_facts: true
-  sudo: true
-  vars_files:
-    - common-var.yml
-  roles:
-    - test_role
